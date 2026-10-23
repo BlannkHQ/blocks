@@ -3,7 +3,7 @@
 import argparse,json,sys,tempfile,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--os-checkout',type=Path,required=True);parser.add_argument('--native',action='store_true');args=parser.parse_args();os_root=args.os_checkout.resolve();sys.path.insert(0,str(os_root/'scripts'))
+parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--os-checkout',type=Path,required=True);parser.add_argument('--native',action='store_true');parser.add_argument('--inside',action='store_true',help=argparse.SUPPRESS);args=parser.parse_args();os_root=args.os_checkout.resolve();sys.path.insert(0,str(os_root/'scripts'))
 from block_runtime import load
 from block_dependencies import inspect,host_module,runtime_environment
 examples=sorted(path for path in (ROOT/'examples/native').iterdir() if path.is_dir())

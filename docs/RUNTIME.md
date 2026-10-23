@@ -69,3 +69,15 @@ plugin ABI/architecture, every dynamic code path or effective permission
 isolation. Declared capabilities are not proof of a sandbox. The OS minimum
 version in a listing is an author's tested claim; installer enforcement remains
 a separate integration gap.
+
+## Native validation evidence
+
+On 2026-10-23, all five examples passed the opt-in native runner on the existing
+ARM64 and x86_64 Linux builders against OS revision
+`275d41092f55f2a83d057d1e9fcc3998f9fdbb27`. Each initialized its IPC handler,
+opened and hid its native panel using the host shared design module. The custom
+graph also loaded its dynamic view and bundled QML module. Logs were checked for
+JavaScript type/reference errors and missing modules. Private D-Bus sessions and
+headless compositors kept the live desktops untouched; examples were not installed
+or modified. These are runtime smoke checks, not a claim of visual pixel review
+or comprehensive gameplay and accessibility coverage.
