@@ -1,0 +1,245 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BLANNK runtime manifest v1 snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "version",
+    "visibility",
+    "runtime",
+    "surfaces"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(?:blannk\\.[a-z0-9-]+|user\\.[a-z0-9-]+\\.[a-z0-9-]+)$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[\\w.-]+)?$"
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "entry",
+        "appId"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "qml",
+            "hybrid",
+            "tui"
+          ]
+        },
+        "entry": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+        },
+        "appId": {
+          "type": "string",
+          "pattern": "^[a-z0-9.-]+$"
+        },
+        "context": {
+          "enum": [
+            "none",
+            "active-window"
+          ]
+        },
+        "ipc": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "target",
+            "open",
+            "state",
+            "hide"
+          ],
+          "properties": {
+            "target": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+            },
+            "open": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+            },
+            "state": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+            },
+            "hide": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9]*$"
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "hybrid"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "body"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "enum": [
+                  "qml",
+                  "hybrid"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "ipc"
+            ]
+          }
+        }
+      ]
+    },
+    "surfaces": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "launcher",
+          "island",
+          "standalone"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "account-security",
+          "audio-control",
+          "bluetooth-control",
+          "camera",
+          "clipboard-read",
+          "clipboard-write",
+          "device-actions",
+          "display-control",
+          "input-injection",
+          "microphone",
+          "network",
+          "network-control",
+          "notifications",
+          "own-data",
+          "power-control",
+          "scheduled-reminders",
+          "screen-capture",
+          "system-info",
+          "user-selected-files"
+        ]
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "componentType": {
+      "enum": [
+        "block",
+        "service"
+      ]
+    },
+    "helpers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "entry",
+          "interpreter"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9-]*$"
+          },
+          "entry": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+          },
+          "interpreter": {
+            "enum": [
+              "python3",
+              "sh"
+            ]
+          }
+        }
+      }
+    },
+    "defaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "placements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "surface"
+            ],
+            "properties": {
+              "surface": {
+                "const": "island"
+              },
+              "region": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

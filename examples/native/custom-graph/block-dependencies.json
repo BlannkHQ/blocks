@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "files": ["block.json","shell.qml","block-dependencies.json","imports","views"],
+  "qmlModules": [{"uri":"Blannk.Design","version":"1.0","provider":"host"},{"uri":"Example.Graphs","version":"1.0","provider":"bundled"}],
+  "qmlImportPaths": ["imports"],
+  "pythonPaths": [],
+  "libraryPaths": [],
+  "bundled": [],
+  "dynamicAssets": ["views"]
+}
