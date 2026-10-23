@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "user.local.example-blank-canvas",
+  "name": "Blank canvas",
+  "version": "0.1.0",
+  "visibility": "private",
+  "runtime": {
+    "kind": "qml",
+    "entry": "shell.qml",
+    "appId": "user.local.example-blank-canvas",
+    "context": "none",
+    "ipc": {
+      "target": "block",
+      "open": "openPanel",
+      "state": "state",
+      "hide": "hide"
+    }
+  },
+  "surfaces": [
+    "standalone",
+    "launcher"
+  ],
+  "capabilities": [
+    "own-data"
+  ],
+  "dependencies": [
+    "quickshell"
+  ],
+  "defaults": {
+    "enabled": false,
+    "placements": []
+  },
+  "helpers": []
+}

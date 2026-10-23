@@ -1,21 +1,29 @@
 {
- "$schema":"https://blannk.com/blocks/listing.schema.json",
- "schemaVersion":1,
- "visibility":"public",
- "id":"user.your-github-handle.my-block",
- "slug":"your-github-handle-my-block",
- "name":"My Block",
- "summary":"Describe what your Block helps people do in one clear sentence.",
- "description":"Explain the workflow, setup, limitations, and why each requested permission is needed. Replace every placeholder before submitting.",
- "category":"Productivity",
- "tags":["productivity"],
- "author":"your-github-handle",
- "version":"0.1.0",
- "license":"MIT",
- "repository":"https://github.com/your-github-handle/my-block",
- "commit":"REPLACE_WITH_FULL_40_CHARACTER_COMMIT_SHA",
- "path":"block",
- "minOsVersion":"0.0.1",
- "permissions":["own-data"],
- "updatedAt":"2026-10-08"
+  "$schema": "https://blannk.com/blocks/listing.schema.json",
+  "schemaVersion": 1,
+  "visibility": "public",
+  "id": "user.local.replace-with-your-existing-id",
+  "slug": "your-github-handle-my-block",
+  "name": "My Block",
+  "summary": "Describe what your Block helps people do in one clear sentence.",
+  "description": "Explain the workflow, setup, limitations, and why each requested permission is needed. Replace every placeholder before submitting.",
+  "category": "Productivity",
+  "tags": [
+    "productivity"
+  ],
+  "author": "your-github-handle",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": "https://github.com/your-github-handle/my-block",
+  "commit": "REPLACE_WITH_FULL_40_CHARACTER_COMMIT_SHA",
+  "path": "block",
+  "minOsVersion": "REPLACE_WITH_TESTED_OS_VERSION",
+  "permissions": [
+    "own-data"
+  ],
+  "updatedAt": "2026-10-08",
+  "authorProfile": "https://github.com/your-github-handle",
+  "publisher": "your-github-handle",
+  "publisherProfile": "https://github.com/your-github-handle",
+  "contributors": []
 }
