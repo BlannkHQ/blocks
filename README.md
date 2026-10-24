@@ -15,7 +15,8 @@ The public Block catalog, compatibility contracts and native examples for
   source and personal data outside public submissions.
 
 See the [native examples](examples/README.md), [runtime contract](docs/RUNTIME.md)
-and [identity and release rules](docs/IDENTITY-AND-RELEASES.md). Schema provenance
+and [identity and release rules](docs/IDENTITY-AND-RELEASES.md). Optional v2
+icons, tags and screenshots are specified in [presentation](docs/PRESENTATION.md). Schema provenance
 is recorded in [contracts/os-contract.json](contracts/os-contract.json).
 
 Keep the same `user.*.*` Block ID when editing or publishing. Existing

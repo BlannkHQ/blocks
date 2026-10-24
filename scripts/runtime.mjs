@@ -2,6 +2,7 @@ import {readFileSync,readdirSync,lstatSync,realpathSync,existsSync} from 'node:f
 import {resolve,relative,join,dirname,isAbsolute,sep} from 'node:path';
 import {createHash} from 'node:crypto';
 import Ajv from 'ajv';
+import {PNG} from 'pngjs';
 const ajv=new Ajv({allErrors:true});
 const validators=Object.fromEntries(['runtime','dependencies'].map(kind=>[kind,ajv.compile(JSON.parse(readFileSync(new URL(`../schema/${kind}.schema.json`,import.meta.url),'utf8')))]));
 function schema(kind,value){if(!validators[kind](value))throw new Error(`${kind}: ${ajv.errorsText(validators[kind].errors)}`);}
@@ -25,6 +26,17 @@ export function validateBlock(directory,listing){
  const required=['block.json',runtime.entry,...(runtime.kind==='hybrid'?[runtime.body]:[]),...(manifest.helpers||[]).map(helper=>helper.entry)];
  for(const path of required)if(!lstatSync(inside(root,path)).isFile())throw new Error(`Required runtime file missing: ${path}`);
  if((manifest.defaults?.placements||[]).length&&!manifest.surfaces.includes('island'))throw new Error('Island placement requires an Island surface');
+ let screenshotEvidence=null;
+ if(manifest.presentation?.screenshot){
+  const data=readFileSync(inside(root,manifest.presentation.screenshot.path));
+  if(data.length>2*1024*1024||data.length<24||data.subarray(0,8).toString('hex')!=='89504e470d0a1a0a')throw new Error('Screenshot must be a PNG at most 2 MiB');
+  const width=data.readUInt32BE(16),height=data.readUInt32BE(20);
+  if(!width||!height||width>4096||height>4096||width*height>8000000)throw new Error('Screenshot dimensions exceed bounds');
+  for(let at=8;at<data.length;){if(at+12>data.length)throw new Error('Truncated PNG');const size=data.readUInt32BE(at),kind=data.subarray(at+4,at+8).toString();if(kind==='acTL')throw new Error('Screenshot must be still');at+=12+size;if(at>data.length)throw new Error('Truncated PNG');}
+  const decoded=PNG.sync.read(data,{checkCRC:true});if(decoded.width!==width||decoded.height!==height)throw new Error('Screenshot dimensions changed');
+  screenshotEvidence={sha256:createHash('sha256').update(data).digest('hex'),width,height,mediaType:'image/png'};
+  required.push(manifest.presentation.screenshot.path);
+ }
  const all=files(root).map(file=>relative(root,file).split(sep).join('/'));
  let dependencies=null,excluded=[];
  if(existsSync(join(root,'block-dependencies.json'))){
@@ -47,6 +59,7 @@ export function validateBlock(directory,listing){
   excluded=all.filter(path=>!selected(path));
  }
  if(listing){
+  if(manifest.schemaVersion===2){if(JSON.stringify(listing.tags)!==JSON.stringify(manifest.tags))throw new Error('Listing/source tags mismatch');if(JSON.stringify(listing.presentation||null)!==JSON.stringify(manifest.presentation||null))throw new Error('Listing/source presentation mismatch');const actual=listing.presentationEvidence?.screenshot;if(Boolean(actual)!==Boolean(screenshotEvidence)||actual&&Object.keys(screenshotEvidence).some(k=>actual[k]!==screenshotEvidence[k]))throw new Error('Listing screenshot evidence mismatch');}
   if(manifest.componentType==='service')throw new Error('Public catalog entries must be optional Blocks');
   for(const key of ['id','version'])if(listing[key]!==manifest[key])throw new Error(`Listing/runtime ${key} mismatch`);
   if(manifest.visibility!=='public')throw new Error('Public submission requires explicit public artifact intent; private source is not published');
