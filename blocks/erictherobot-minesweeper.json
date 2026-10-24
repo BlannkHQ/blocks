@@ -1,0 +1,29 @@
+{
+  "slug": "erictherobot-minesweeper",
+  "summary": "simple game that is fun",
+  "description": "simple game description is here",
+  "license": "MIT",
+  "category": "Games",
+  "minOsVersion": "0.1.0-dev",
+  "tags": [
+    "block"
+  ],
+  "author": "erictherobot",
+  "schemaVersion": 1,
+  "visibility": "public",
+  "id": "user.local.139e727b6315",
+  "name": "Minesweeper",
+  "version": "0.1.0",
+  "repository": "https://github.com/erictherobot/blannk-minesweeper",
+  "commit": "2c63fbf9f5c5f9c0ec1c439c72a4c76b41c0e8a1",
+  "path": "blocks/erictherobot-minesweeper/0bf11d4758042da36ef5",
+  "permissions": [
+    "own-data"
+  ],
+  "updatedAt": "2026-10-24",
+  "publisher": "erictherobot",
+  "publisherId": 135601,
+  "authorProfile": "https://github.com/erictherobot",
+  "publisherProfile": "https://github.com/erictherobot",
+  "authorId": 135601
+}
