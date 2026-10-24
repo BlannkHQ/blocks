@@ -1,29 +1,19 @@
-# Signing and trust: current facts
+# Signing and trust
 
-There is no implemented publisher/package signing protocol, signature field,
-trusted-key store or revocation workflow in this repository/current Block
-installer. Do not display a Signed, Verified publisher or Safe badge based only
-on catalog validation or a GitHub merge.
+Catalog validation and a GitHub merge do not establish a Signed, Verified
+publisher or Safe status. The catalog schema does not define a package-signature
+or trusted-publisher assertion.
 
-- A Git commit pins source. A signed Git commit, if present, is a separate Git
-  identity assertion and is not an installed-package signature.
-- A SHA256 or OS package fingerprint identifies reviewed bytes/state. A checksum
-  has no signer and does not prove author authority or safety.
-- Maintainer PR approval accepts catalog metadata/source evidence under policy.
-  It is not cryptographic signing and does not execute or certify the Block.
-- Local Authentication authorizes a system operation. It does not sign the Block.
-- Dependency manager signatures remain that provider's own verification; they
-  are not signatures over the whole Block.
+- A Git commit pins source. A signed Git commit is a separate Git identity
+  assertion, not a signature over an installed Block package.
+- A checksum or package fingerprint identifies bytes or filesystem state. It
+  does not establish publisher authority or safety.
+- Maintainer review evaluates submission evidence. It does not execute or
+  certify every behavior of a Block.
+- Declared capabilities describe requested access. They are not proof of a
+  sandbox or effective isolation.
+- Dependency-provider signatures apply to that provider's packages, not to the
+  complete Block.
 
-Before a signing feature, decide the artifact/manifest format and canonical
-serialization, signer role (publisher and/or BLANNK), key issuance/storage,
-rotation/revocation and verification/recovery policy. A publishing adapter must
-show exactly what will leave the device and what will be signed, then request
-explicit user action. Never upload a private Block to obtain a catalog identity.
-
-The current GitHub plan reports that private branch protections/rulesets are not
-available. Required-review enforcement needs a supported private-repo plan or
-another independently enforced release gate before automated publication. Keep
-repository visibility private; changing it or account billing is a separate
-explicit decision. This alignment adds documentation/tests, not a pretend gate
-or an unreviewed cryptographic protocol.
+Review source, license, dependencies and requested capabilities before installing.
+Keep private working files and personal settings out of public distributions.

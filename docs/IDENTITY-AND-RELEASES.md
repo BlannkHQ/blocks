@@ -4,7 +4,6 @@
 |---|---|---|
 | Block ID | Permanent runtime/catalog identity | Preserve it |
 | Name | Human-facing title | May change |
-| CLI alias | Readable local handle pointing to an ID | Proposed OS feature, not implemented |
 | Slug | Publisher-prefixed website route/filename | Preserve for ordinary updates |
 | Author | Original creator GitHub handle/profile | Preserve credit |
 | Publisher | Current declared publisher handle/profile | Authority/transfer requires maintainer review |
@@ -26,21 +25,11 @@ numeric major.minor.patch and optional prerelease identifiers. A listing version
 must match the source manifest. Declaring a newer number does not update an
 installed package: the current OS rejects an already installed ID.
 
-Current OS Git installation resolves a moving requested ref to an immutable
-commit, shows it in the review/result, and fingerprints the staged package.
-Those origin details are not yet a durable installed-origin receipt. Catalog
-metadata does not currently include an exact package artifact digest. Git source
-revision, the dependency subtree checksum, archive SHA256 and the OS's
-mode-sensitive staged-tree fingerprint are different things; do not label them
-interchangeably or invent an artifact signature.
-
-A future updater should record origin, release version, resolved source revision,
-package fingerprint and dependency state; detect local modifications; present
-the change; preserve user data/registration; and retain an atomic rollback point.
-Existing uninstall/restore archives are useful foundations, not a completed
-version-aware updater. Establish canonical artifact serialization and the
-installed receipt before adding package digest/signature fields to this catalog.
-No such OS behavior is silently changed by this repository alignment.
+Pin public listings to an immutable Git commit and exact package folder. Git
+source revisions, dependency subtree checksums, archive SHA256 values and
+mode-sensitive package fingerprints identify different objects. Do not label
+those values interchangeably or describe a checksum as a publisher signature.
+A catalog version change alone does not update an installed Block.
 
 The catalog exporter retains creator/publisher profile links and contributors independently of runtime identity. A website should display both the creator profile and source repository so users can inspect reputation and credit. A handle or profile link is not a verified endorsement. Publisher changes do not erase original creator attribution.
 

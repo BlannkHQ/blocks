@@ -1,8 +1,7 @@
 # Reviewed catalog submission
 
-This flow is available to authorized private-repository collaborators today.
-It describes the manual process an OS publish adapter should later automate.
-It does not authorize publishing a user's Block just because Agent created it.
+Publish only source explicitly selected for public release. Creating a Block
+does not authorize uploading it.
 
 1. Keep the stable Block ID. Review selected distribution files, custom assets,
    dependency provenance, permissions, secrets and local changes.
@@ -31,9 +30,7 @@ check these. Withdrawal removes a listing from the next build but does not
 uninstall local copies or erase Git history. Ownership transfer, disputes and
 slug redirects require a defined maintainer process, not automatic ID changes.
 
-Do not submit private URLs, credentials, private source or local profiles. This
-repository itself being private does not make a private Block listing valid.
-Public outside fork submissions require a later explicit contribution-access
-policy. Do not change repository visibility as a workaround for required reviews.
-
-The OS implementation has not been designated open source. Public Marketplace contributions need their own actual open-source licenses. Do not change private repository visibility, publish private OS code or assume first-party starter redistribution rights without the corresponding explicit decision.
+Do not submit private URLs, credentials, private source or local profiles.
+Public Marketplace contributions need their own actual open-source licenses.
+Public access to this catalog does not license the OS implementation or grant
+redistribution rights to first-party starter files.

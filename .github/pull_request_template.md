@@ -36,6 +36,4 @@ Catalog submission/update/withdrawal or contract/tooling change:
 Maintainer: review ownership, source, release continuity, capabilities and actual
 evidence before merge. A metadata check/merge is not package signing, sandboxing
 or a safety certificate. Merge makes a listing eligible for a later website
-sync/build; it does not deploy or install it. Private-repo required-review
-protection is currently unavailable under the account plan; do not claim it is
-an enforced gate or enable automatic publishing as a workaround.
+sync/build; it does not deploy or install it.
