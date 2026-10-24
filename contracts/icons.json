@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "library": "Lucide",
+  "documentation": "https://lucide.dev/icons/",
+  "licenses": [
+    "ISC",
+    "MIT (Feather-derived icons)"
+  ],
+  "keys": {
+    "app-window": {
+      "lucide": "app-window",
+      "exportName": "AppWindow",
+      "aliases": []
+    },
+    "timer": {
+      "lucide": "timer",
+      "exportName": "Timer",
+      "aliases": []
+    },
+    "calendar": {
+      "lucide": "calendar",
+      "exportName": "Calendar",
+      "aliases": []
+    },
+    "notebook-pen": {
+      "lucide": "notebook-pen",
+      "exportName": "NotebookPen",
+      "aliases": []
+    },
+    "file-text": {
+      "lucide": "file-text",
+      "exportName": "FileText",
+      "aliases": []
+    },
+    "list-checks": {
+      "lucide": "list-checks",
+      "exportName": "ListChecks",
+      "aliases": []
+    },
+    "activity": {
+      "lucide": "activity",
+      "exportName": "Activity",
+      "aliases": []
+    },
+    "terminal": {
+      "lucide": "terminal",
+      "exportName": "Terminal",
+      "aliases": []
+    },
+    "code": {
+      "lucide": "code",
+      "exportName": "Code",
+      "aliases": []
+    },
+    "music": {
+      "lucide": "music",
+      "exportName": "Music",
+      "aliases": []
+    },
+    "image": {
+      "lucide": "image",
+      "exportName": "Image",
+      "aliases": []
+    },
+    "mail": {
+      "lucide": "mail",
+      "exportName": "Mail",
+      "aliases": []
+    },
+    "folder": {
+      "lucide": "folder",
+      "exportName": "Folder",
+      "aliases": []
+    },
+    "network": {
+      "lucide": "network",
+      "exportName": "Network",
+      "aliases": []
+    }
+  }
+}

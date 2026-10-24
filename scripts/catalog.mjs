@@ -23,6 +23,7 @@ export function validateListing(entry, filename) {
  for (const value of [entry.name, entry.summary, entry.description]) {
   if (!value.trim() || /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(value)) throw new Error(`${filename}: invalid text`);
  }
+ if(entry.presentation?.screenshot){if(!entry.presentationEvidence?.screenshot)throw new Error(`${filename}: screenshot requires publisher-derived evidence`);const e=entry.presentationEvidence.screenshot;if(e.width*e.height>8000000)throw new Error(`${filename}: screenshot pixel limit`);}else if(entry.presentationEvidence)throw new Error(`${filename}: evidence requires screenshot`);
  return {...entry,publisher,authorProfile,publisherProfile};
 }
 export function readCatalog(directory, examples = []) {

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://blannk.com/blocks/listing.schema.json",
-  "title": "Blannk public catalog listing v1 (not an OS runtime manifest)",
+  "title": "BLANNK public catalog listing v1/v2",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -29,7 +29,10 @@
       "const": "https://blannk.com/blocks/listing.schema.json"
     },
     "schemaVersion": {
-      "const": 1
+      "enum": [
+        1,
+        2
+      ]
     },
     "visibility": {
       "const": "public"
@@ -184,6 +187,108 @@
       "minimum": 1,
       "maximum": 9007199254740991,
       "description": "Optional stable numeric GitHub account ID. Maintainer verification is required; self-declared metadata is not proof of identity."
+    },
+    "presentation": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "icon": {
+          "type": "string",
+          "enum": [
+            "app-window",
+            "timer",
+            "calendar",
+            "notebook-pen",
+            "file-text",
+            "list-checks",
+            "activity",
+            "terminal",
+            "code",
+            "music",
+            "image",
+            "mail",
+            "folder",
+            "network"
+          ]
+        },
+        "screenshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "alt"
+          ],
+          "properties": {
+            "path": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 240,
+              "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*[\\\\:#?])[A-Za-z0-9_./ -]+\\.png$"
+            },
+            "alt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 180
+            }
+          }
+        }
+      }
+    },
+    "presentationEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "screenshot"
+      ],
+      "properties": {
+        "screenshot": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "sha256",
+            "width",
+            "height",
+            "mediaType"
+          ],
+          "properties": {
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "width": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4096
+            },
+            "height": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 4096
+            },
+            "mediaType": {
+              "const": "image/png"
+            }
+          }
+        }
+      }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "schemaVersion": {
+            "const": 1
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "presentation": false,
+          "presentationEvidence": false
+        }
+      }
+    }
+  ]
 }
