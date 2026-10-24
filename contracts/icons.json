@@ -77,5 +77,10 @@
       "exportName": "Network",
       "aliases": []
     }
+  },
+  "provenance": {
+    "source": "BLANNK host shared/design/Icons.js",
+    "sha256": "eecaf0c895787f4438bc98c84c4d9ad5496ead24be24f21281a62c67da794ccb",
+    "notice": "ICONS-NOTICE.txt"
   }
 }
