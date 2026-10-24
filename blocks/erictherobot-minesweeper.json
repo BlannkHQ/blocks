@@ -6,17 +6,20 @@
   "category": "Games",
   "minOsVersion": "0.1.0-dev",
   "tags": [
-    "block"
+    "puzzle",
+    "retro",
+    "simple"
   ],
   "author": "erictherobot",
-  "schemaVersion": 1,
+  "authorId": 135601,
+  "schemaVersion": 2,
   "visibility": "public",
   "id": "user.local.139e727b6315",
   "name": "Minesweeper",
   "version": "0.1.0",
   "repository": "https://github.com/erictherobot/blannk-minesweeper",
-  "commit": "2c63fbf9f5c5f9c0ec1c439c72a4c76b41c0e8a1",
-  "path": "blocks/erictherobot-minesweeper/0bf11d4758042da36ef5",
+  "commit": "aba387c2c1a84450ef41e65bd94d1638107bc4df",
+  "path": "blocks/erictherobot-minesweeper/f99d80265770407cfe1f",
   "permissions": [
     "own-data"
   ],
@@ -25,5 +28,19 @@
   "publisherId": 135601,
   "authorProfile": "https://github.com/erictherobot",
   "publisherProfile": "https://github.com/erictherobot",
-  "authorId": 135601
+  "presentation": {
+    "icon": "code",
+    "screenshot": {
+      "path": "assets/block-screenshot-46379511c629895625981c5d704739b0ea4fb978d14e1224caea9a72c7599299.png",
+      "alt": "The game"
+    }
+  },
+  "presentationEvidence": {
+    "screenshot": {
+      "sha256": "46379511c629895625981c5d704739b0ea4fb978d14e1224caea9a72c7599299",
+      "width": 1886,
+      "height": 1194,
+      "mediaType": "image/png"
+    }
+  }
 }
