@@ -2,15 +2,19 @@
   "schemaVersion": 1,
   "source": {
     "repository": "https://github.com/BlannkHQ/BLANNK_OS_CANVAS",
-    "commit": "275d41092f55f2a83d057d1e9fcc3998f9fdbb27",
+    "commit": "c739baac03bb18b1c82ad38888f1a7f4903c6083",
     "files": {
-      "scripts/block_runtime.py": "90df4adafae663c3f3fe1f04a3f03d39896ec5e3e84237c06f3b1300a91478e5",
+      "scripts/block_runtime.py": "a822858195bdc190eacc79812f53c6b16842719fca8790e209e9733a54e9f951",
       "scripts/block_templates.py": "a8d1e57db8c8b2ed031ff9f0381342ce0c96cf4fa5f7285326abc02ce4ab9f90",
-      "scripts/block_dependencies.py": "f357c59d7e446a52c5c0ce54f1bc79925f35e83b61dc2cf32c95f47566cbefbb",
-      "scripts/block_install.py": "a94b22612cca7eccecf3fc1fe7b3a397194fcaecb54f4d9d4bb4a8845fcce756"
+      "scripts/block_dependencies.py": "4cb00552f928eea09259b7a169e866e89201c4ec255e4260d0d071f5cdb792c0",
+      "scripts/block_install.py": "9e114cd177cf464f0dce945d02e6f0bb077a41b490ca27b9d7853bee3f2b7aca"
     }
   },
-  "runtimeSchemaVersion": 1,
+  "runtimeSchemaVersion": 2,
+  "supportedRuntimeSchemaVersions": [
+    1,
+    2
+  ],
   "hostDesign": {
     "uri": "Blannk.Design",
     "version": "1.0",
